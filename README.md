@@ -38,3 +38,5 @@ Example commands:
     len {1 2 3 4}
   
     reverse {1 2 3 4}
+  
+  Other example functions can be seen in example_functions.txt
