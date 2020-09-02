@@ -2,6 +2,8 @@ Compiling:
 
 gcc lisp.c mpc.c  -ledit -lm -o lisp
 
+Note: several of the functions build off of previously declared functions
+      so make sure to resolve dependancies by declaring necessary functions
 
 function defining function:
   def {fun} (\ {args body} {def (head args) (\ (tail args) body)})
@@ -17,40 +19,31 @@ Atoms:
   (def {true} 1)
   (def {false} 0)
 
+Open new scope:
+(fun {let b} {((\ {_} b) ())})
 
-; Open new scope
-(fun {let b} {
-  ((\ {_} b) ())
-})
+Unpack List to Function:
+(fun {unpack f l} {eval (join (list f) l)})
 
-; Unpack List to Function
-(fun {unpack f l} {
-  eval (join (list f) l)
-})
-
-; Unapply List to Function
+Unapply List to Function:
 (fun {pack f & xs} {f xs})
 
-; Curried and Uncurried calling
+Curried and Uncurried calling:
 (def {curry} unpack)
 (def {uncurry} pack)
 
-; Perform Several things in Sequence
-(fun {do & l} {
-  if (== l nil)
-    {nil}
-    {last l}
-})
+Perform Several things in Sequence:
+(fun {do & l} {if (== l nil){nil}{last l}})
 
 Logical Functions:
 (fun {not x}   {- 1 x})
 (fun {or x y}  {+ x y})
 (fun {and x y} {* x y})
 
+Numeric Functions:
 
-;;; Numeric Functions
+Minimum of Arguments:
 
-; Minimum of Arguments
 (fun {min & xs} {
   if (== (tail xs) nil) {fst xs}
     {do 
@@ -60,7 +53,8 @@ Logical Functions:
     }
 })
 
-; Maximum of Arguments
+Maximum of Arguments:
+
 (fun {max & xs} {
   if (== (tail xs) nil) {fst xs}
     {do 
@@ -70,7 +64,7 @@ Logical Functions:
     }  
 })
 
-;;; Conditional Functions
+Conditional Functions:
 
 (fun {select & cs} {
   if (== cs nil)
@@ -88,15 +82,9 @@ Logical Functions:
 (def {otherwise} true)
 
 
-;;; Misc Functions
+List Functions:
 
-(fun {flip f a b} {f b a})
-(fun {ghost & xs} {eval xs})
-(fun {comp f g x} {f (g x)})
-
-;;; List Functions
-
-; First, Second, or Third Item in List
+First, Second, or Third Item in List:
 (fun {fst l} { eval (head l) })
 (fun {snd l} { eval (head (tail l)) })
 (fun {trd l} { eval (head (tail (tail l))) })
@@ -111,18 +99,17 @@ Apply Function to List:
 
 (fun {map f l} { if (== l nil) {nil} {join (list (f (fst l))) (map f (tail l))}})
 
-
 Apply Filter to List:
 
 (fun {filter f l} { if (== l nil) {nil} {join (if (f (fst l)) {head l} {nil}) (filter f (tail l))}})
 
-; Return all of list but last element
+Return all of list but last element:
+
 (fun {init l} {
   if (== (tail l) nil)
     {nil}
     {join (head l) (init (tail l))}
 })
-
 
 Fibonacci:
 
