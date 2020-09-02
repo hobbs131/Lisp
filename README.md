@@ -17,7 +17,7 @@ Compilation/Running (Ubuntu Linux):
 Note: Language uses polish notation (Operator comes before operands). 
 e.g. + 1 2 is 1 + 2 in standard notation. More examples can be seen below.
 
- Example commands:
+Example commands:
  
   function defining function (allows for simpler function declaration):
   
