@@ -12,6 +12,7 @@
   
 Compilation/Running (Ubuntu Linux):
   gcc lisp.c mpc.c  -ledit -lm -o lisp
+  
   ./lisp
   
 Note: Language uses polish notation (Operator comes before operands). 
