@@ -20,8 +20,7 @@ e.g. + 1 2 is 1 + 2 in standard notation. More examples can be seen below.
  Example commands:
  
   function defining function (allows for simpler function declaration):
-  
-    def {fun} (\ {args body} {def (head args) (\ (tail args) body)})
+  def {fun} (\ {args body} {def (head args) (\ (tail args) body)})
   
   list length:
     (fun {len l} { if (== l {}) {0} {+ 1 (len (tail l))}})
