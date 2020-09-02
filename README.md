@@ -1,4 +1,4 @@
-# Custom programming language (lisp) created using C.
+# Custom programming language (lisp) created using C. Uses Mpc.c, a parser combinator library.
 # Implements REPL (read-evaluate-print-loop) which supports the following:
   - variable declaration
   - conditionals
