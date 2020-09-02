@@ -1,0 +1,69 @@
+fputs -- outputs promt (takes stdout)
+fgets -- gets user input (takes stdin)
+
+
+Uses AST - Abstract Syntax Tree - represents the structure of the program based on the input typed by the user - leaves are numbers and operators, data which can be processed and no longer needs to be simplified. Branches are the rules used to produce this part of the tree. (info on how to traverse and evaluate it)
+
+Uses mpc, a parser combinator library (which is a library that allows you to build programs that understand and process particular languages)
+
+Uses parsers such as number, operator, expression, and lispy in order to take user input and build a data structure, AST in our case.
+
+strstr - takes as input two *char and returns a pointer to the location of the second in the first if its a substring of the first, or 0 if not.
+
+Uses an interactive prompt utilizing a read-evaluate-print-loop to interact with the language dynamically.
+
+Uses S(ymbolic) Expression which is an internal list built up recursively of numbers, symbols, and other lists. To evaluate an S-Expression, we look at the first item, which is the operator. The other items are then looked at and we take these as operands to get the result.
+
+In our programming language, an expression will evaluate to either a number, or an error.
+
+lval has fields type and error that are int. Works as such: if type is 0 then structure is a Number. If type is 1 then the structure is an Error.
+
+Parses S-expressions which is just a number of other expressions between parantheses, where an expression can be a Number, Operator, or other S-Expression.
+
+Normal lisps use cons to join S-expressions which results in linked lists. This implementation represents S-expressions as a variable sized array.
+
+Evaluate all the children of the S-expression. If any of these children are errors, return the first error we encounter using lval_take.
+	- no children - return directly
+	- one child - return expression contained within the parentheses
+	- otherwise valid expression, so separate first expression using lval_pop
+	- check if symbol, if so check what kind of symbol and pass it to a function buildin_op.
+	- if not a symbol, delete it and the values passed into the evaluation function, returning an error.
+	- all other types are returned directly.
+
+Adding new features:
+	Syntax - add new rule to the language grammar
+	Representation - add new deata type variation
+	Parsing - add new functions for reading this feature from the AST
+	Semantics - add new functions for evaluating and manipulating this feature
+
+Q(uoted) expressions:
+	- Are not touched by the evaluation function -- good for manipulating and storing other lisp values
+	- Dont exist in other lisps. Other lisps use macros to stop evaluation (quote ') stops evaluation.
+
+Features of this language:
+
+can put code inside lists -- feature that other languages lack
+
+variables are immutable in this language -- lets us assign a name to a value
+
+creates environment that stores the name and value of everything named in the program.
+	- each symbol in the lenv struct has a corresponding val
+
+For symbol syntax, the range is within [....]. inside range specifiers special characters lose their meaning, but some characters still need to be escaped with backslashes. As this is part of a C string, we need to put two backslashes to represent a single backslash character in the input
+
+lval_call function: iterates over passed in arguments attempting to place each one in the environment. Checks if environment is full and if so, evaluates. Otherwise returns a copy of itself with some of the arguments filled.
+
+
+Ternary operator: <condition> ? <then> : <else>
+
+REPL:
+	Read: reads input and constructs an lval* to represent it. Converts AST into an S-expression.
+		- Recursively looks at each node of the tree, and constructs different lval* types depending on the tag and content fields of the node
+
+		- If Symbol or Number, return an lval* directly
+
+		- If root or sexpr, create empty sexpr lval and add each valid sub-expression contained in the tree
+
+	Evaluate: Evaluates S-expression using normal lisp rules.
+
+Other: refresh on recursion
