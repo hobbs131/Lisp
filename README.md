@@ -24,25 +24,25 @@
 
 # Example commands:
  
-  function defining function (allows for simpler function declaration):
+  - function defining function (allows for simpler function declaration):
   
     def {fun} (\ {args body} {def (head args) (\ (tail args) body)})
   
-  list length:
+  - list length:
    
     (fun {len l} { if (== l {}) {0} {+ 1 (len (tail l))}})
 
-  reverse list:
+  - reverse list:
   
     (fun {reverse l} { if (== l {}) {{}} {join (reverse (tail l)) (head l)}})
     
-  Commands to use functions once declared:
+  - Commands to use functions once declared:
   
     len {1 2 3 4}
   
     reverse {1 2 3 4}
   
-  Other example functions can be seen in example_functions.txt
+  - Other example functions can be seen in example_functions.txt
   
   # Demo
   
