@@ -1,4 +1,6 @@
-# Custom programming language (lisp) created using C. Uses Mpc.c, a parser combinator library.
+# Custom programming language (lisp) 
+  - Uses Mpc.c, a parser combinator library.
+  
 # Implements REPL (read-evaluate-print-loop) which supports the following:
   - variable declaration
   - conditionals
@@ -10,16 +12,17 @@
   - comments
   - file loading (Work in Progress)
   
-Compilation/Running (Ubuntu Linux):
+# Compilation/Running (Ubuntu Linux):
   
   gcc lisp.c mpc.c  -ledit -lm -o lisp
   
   ./lisp
   
-Note: Language uses polish notation (Operator comes before operands). 
-e.g. + 1 2 is 1 + 2 in standard notation. More examples can be seen below.
+# Note
+  - Language uses polish notation (Operator comes before operands). 
+  - e.g. + 1 2 is 1 + 2 in standard notation. More examples can be seen below.
 
-Example commands:
+# Example commands:
  
   function defining function (allows for simpler function declaration):
   
@@ -40,3 +43,7 @@ Example commands:
     reverse {1 2 3 4}
   
   Other example functions can be seen in example_functions.txt
+  
+  # Demo
+  
+  
