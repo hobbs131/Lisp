@@ -2,7 +2,8 @@
   - Uses Mpc.c, a parser combinator library, to implement a REPL(read-evaluate-print-loop)
 
 # Compilation/Running (Ubuntu Linux):  
-  ```gcc lisp.c mpc.c  -ledit -lm -o lisp
+  ```
+  gcc lisp.c mpc.c  -ledit -lm -o lisp
   ```
   ```
   ./lisp
