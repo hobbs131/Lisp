@@ -1,7 +1,11 @@
 # Custom programming language (lisp) 
-  - Uses Mpc.c, a parser combinator library.
-  
-# Implements REPL (read-evaluate-print-loop) which supports the following:
+  - Uses Mpc.c, a parser combinator library, to implement a REPL(read-evaluate-print-loop)
+
+# Compilation/Running (Ubuntu Linux):  
+  ```gcc lisp.c mpc.c  -ledit -lm -o lisp
+  ./lisp
+  ``` 
+## Features
   - variable declaration
   - conditionals
   - functions
@@ -12,17 +16,11 @@
   - comments
   - file loading (Work in Progress)
   
-# Compilation/Running (Ubuntu Linux):
-  
-  gcc lisp.c mpc.c  -ledit -lm -o lisp
-  
-  ./lisp
-  
-# Note
+## Note
   - Language uses polish notation (Operator comes before operands). 
   - e.g. + 1 2 is 1 + 2 in standard notation. More examples can be seen below.
 
-# Example commands:
+## Example commands:
  
   - function defining function (allows for simpler function declaration):
   
