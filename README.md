@@ -3,6 +3,8 @@
 
 # Compilation/Running (Ubuntu Linux):  
   ```gcc lisp.c mpc.c  -ledit -lm -o lisp
+  ```
+  ```
   ./lisp
   ``` 
 ## Features
@@ -42,7 +44,7 @@
   
   - Other example functions can be seen in example_functions.txt
   
-  # Demo
+  ## Demo
   
   ![lisp](https://user-images.githubusercontent.com/60115853/92162867-73481e80-edf8-11ea-86e4-0fe12423ce40.png)
   
